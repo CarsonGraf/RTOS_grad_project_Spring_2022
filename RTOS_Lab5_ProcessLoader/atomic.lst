@@ -1,0 +1,90 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             |.text|, CODE, READONLY, ALIGN=
+2
+    2 00000000                 THUMB
+    3 00000000                 REQUIRE8
+    4 00000000                 PRESERVE8
+    5 00000000                 EXPORT           atomic_inc
+    6 00000000                 EXPORT           atomic_dec
+    7 00000000         
+    8 00000000         atomic_inc                           ; (uint32_t* num)
+    9 00000000 4601            MOV              R1, R0
+   10 00000002         spin
+   11 00000002 E851 0F00       LDREX            R0, [R1]
+   12 00000006 F100 0001       ADD              R0, R0, #1
+   13 0000000A E841 0200       STREX            R2, R0, [R1]
+   14 0000000E 2A00            CMP              R2, #0
+   15 00000010 D1F7            BNE              spin
+   16 00000012 4770            BX               LR
+   17 00000014         
+   18 00000014         atomic_dec                           ; (uint32_t* num)
+   19 00000014 4601            MOV              R1, R0
+   20 00000016         spin_dec
+   21 00000016 E851 0F00       LDREX            R0, [R1]
+   22 0000001A F1A0 0001       SUB              R0, R0, #1
+   23 0000001E E841 0200       STREX            R2, R0, [R1]
+   24 00000022 2A00            CMP              R2, #0
+   25 00000024 D1F7            BNE              spin_dec
+   26 00000026 4770            BX               LR
+   27 00000028         
+   28 00000028                 ALIGN
+   29 00000028                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4 --apcs=interw
+ork --depend=.\atomic.d -o.\atomic.o -I.\RTE\_Lab5 -IC:\Users\Carson\AppData\Lo
+cal\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123 --predefine="__EVAL SE
+TA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 536" 
+--predefine="_RTE_ SETA 1" --predefine="TM4C123GH6PM SETA 1" --predefine="_RTE_
+ SETA 1" --list=.\atomic.lst ..\RTOS_Labs_common\atomic.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 1 in file ..\RTOS_Labs_common\atomic.s
+   Uses
+      None
+Comment: .text unused
+atomic_dec 00000014
+
+Symbol: atomic_dec
+   Definitions
+      At line 18 in file ..\RTOS_Labs_common\atomic.s
+   Uses
+      At line 6 in file ..\RTOS_Labs_common\atomic.s
+Comment: atomic_dec used once
+atomic_inc 00000000
+
+Symbol: atomic_inc
+   Definitions
+      At line 8 in file ..\RTOS_Labs_common\atomic.s
+   Uses
+      At line 5 in file ..\RTOS_Labs_common\atomic.s
+Comment: atomic_inc used once
+spin 00000002
+
+Symbol: spin
+   Definitions
+      At line 10 in file ..\RTOS_Labs_common\atomic.s
+   Uses
+      At line 15 in file ..\RTOS_Labs_common\atomic.s
+Comment: spin used once
+spin_dec 00000016
+
+Symbol: spin_dec
+   Definitions
+      At line 20 in file ..\RTOS_Labs_common\atomic.s
+   Uses
+      At line 25 in file ..\RTOS_Labs_common\atomic.s
+Comment: spin_dec used once
+5 symbols
+340 symbols in table

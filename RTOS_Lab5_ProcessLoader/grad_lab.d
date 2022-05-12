@@ -1,0 +1,17 @@
+.\grad_lab.o: grad_lab.c
+.\grad_lab.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\grad_lab.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\grad_lab.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\grad_lab.o: ../inc/tm4c123gh6pm.h
+.\grad_lab.o: ../inc/CortexM.h
+.\grad_lab.o: ../inc/LaunchPad.h
+.\grad_lab.o: ../inc/PLL.h
+.\grad_lab.o: ../inc/LPF.h
+.\grad_lab.o: ../RTOS_Labs_common/UART0int.h
+.\grad_lab.o: ../RTOS_Labs_common/ADC.h
+.\grad_lab.o: ../RTOS_Labs_common/OS.h
+.\grad_lab.o: ../RTOS_Labs_common/heap.h
+.\grad_lab.o: ../RTOS_Labs_common/Interpreter.h
+.\grad_lab.o: ../RTOS_Labs_common/ST7735.h
+.\grad_lab.o: ../RTOS_Labs_common/eDisk.h
+.\grad_lab.o: ../RTOS_Labs_common/eFile.h
